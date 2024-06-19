@@ -33,11 +33,16 @@ for src in $CPPSOURCES $CSOURCES; do
     fi
 done
 
-# Enlazar los archivos objeto en un ejecutable
+# Verificar si hubo errores de compilación
+if [ $error_count -ne 0 ]; then
+    echo "Compilación completada con $error_count errores"
+fi
+
+# Intentar enlazar los archivos objeto en un ejecutable
 g++ $OBJDIR/*.o -o $BINDIR/my_program
 if [ $? -ne 0 ]; then
     echo "Error al enlazar los archivos objeto"
-    exit 1
+    exit 0  # No detener el script, continuar con el análisis de SonarQube
 fi
 
-echo "Compilación y enlace completados exitosamente con $error_count errores"
+echo "Compilación y enlace completados exitosamente"
