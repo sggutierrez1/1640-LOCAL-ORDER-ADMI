@@ -17,6 +17,8 @@ pipeline {
                   curl -sSLo .sonar/build-wrapper-linux-x86.zip https://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip 
                   unzip -o .sonar/build-wrapper-linux-x86.zip -d .sonar/
                 '''
+                sh 'chmod +x .sonar/build-wrapper-linux-x86/build-wrapper-linux-x86-64'
+                sh 'chmod +x compile.sh'
             }
         }
         stage('Build archivos c++') {
