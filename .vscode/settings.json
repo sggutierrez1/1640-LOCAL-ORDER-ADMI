@@ -1,0 +1,6 @@
+{
+    "sonarlint.connectedMode.project": {
+        "connectionId": "sonacloud",
+        "projectKey": "poc-55tq"
+    }
+}
