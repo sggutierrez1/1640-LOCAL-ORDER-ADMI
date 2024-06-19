@@ -18,6 +18,9 @@ if [ -z "$CPPSOURCES" ] && [ -z "$CSOURCES" ]; then
     exit 1
 fi
 
+# Variable para contar los errores
+error_count=0
+
 # Compilar cada archivo fuente en un archivo objeto
 for src in $CPPSOURCES $CSOURCES; do
     objfile="$OBJDIR/$(basename $src .cpp).o"
@@ -26,7 +29,7 @@ for src in $CPPSOURCES $CSOURCES; do
     g++ -c $src -o $objfile
     if [ $? -ne 0 ]; then
         echo "Error al compilar $src"
-        exit 1
+        error_count=$((error_count+1))
     fi
 done
 
@@ -37,4 +40,4 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo "Compilación y enlace completados exitosamente"
+echo "Compilación y enlace completados exitosamente con $error_count errores"
