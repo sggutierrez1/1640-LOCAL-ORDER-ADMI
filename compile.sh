@@ -8,18 +8,20 @@ mkdir -p $OBJDIR
 BINDIR=bin
 mkdir -p $BINDIR
 
-# Buscar todos los archivos .cpp en el directorio actual y subdirectorios
-SOURCES=$(find . -name '*.cpp')
+# Buscar todos los archivos .cpp y .c en el directorio actual y subdirectorios
+CPPSOURCES=$(find . -name '*.cpp')
+CSOURCES=$(find . -name '*.c')
 
 # Verificar si se encontraron archivos fuente
-if [ -z "$SOURCES" ]; then
-    echo "No se encontraron archivos fuente .cpp"
+if [ -z "$CPPSOURCES" ] && [ -z "$CSOURCES" ]; then
+    echo "No se encontraron archivos fuente .cpp o .c"
     exit 1
 fi
 
 # Compilar cada archivo fuente en un archivo objeto
-for src in $SOURCES; do
+for src in $CPPSOURCES $CSOURCES; do
     objfile="$OBJDIR/$(basename $src .cpp).o"
+    objfile="${objfile%.c}.o"  # Cambiar extensión de .c a .o para archivos .c
     echo "Compilando $src a $objfile"
     g++ -c $src -o $objfile
     if [ $? -ne 0 ]; then
