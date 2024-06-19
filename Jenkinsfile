@@ -33,9 +33,13 @@ pipeline {
             }
         }
         stage('Build archivos c++') {
-            steps {
-                sh '.sonar/build-wrapper-linux-x86/build-wrapper-linux-x86-64 --out-dir bw-output ./compile.sh' 
-            }
+            steps 
+            script {
+                def result = sh(script: '.sonar/build-wrapper-linux-x86/build-wrapper-linux-x86-64 --out-dir bw-output ./compile.sh', returnStatus: true)
+                    if (result != 0) {
+                        echo 'Hubo errores durante la compilación, pero continuaremos con el análisis de SonarQube.'
+                    }
+                }
         }
         stage('Liga del scanner') {
             steps {
