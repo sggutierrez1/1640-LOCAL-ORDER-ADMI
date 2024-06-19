@@ -10,6 +10,17 @@ pipeline {
                 git branch: 'main', poll: false, url: 'https://github.com/EnriqueTun23/1640-LOCAL-ORDER-ADMI.git'
             }
         }
+        stage('Instalar g++') {
+            steps {
+                sh '''
+                  if ! command -v g++ &> /dev/null
+                  then
+                      sudo apt-get update
+                      sudo apt-get install -y g++
+                  fi
+                '''
+            }
+        }
         stage('Descargar Build Wrapper ') {
             steps {
                 sh '''
