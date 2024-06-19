@@ -28,9 +28,13 @@ int main() {
              
             if (sn == 's' || sn == 'S') {
                 goto inicio;
-            } else {
+            } else if (sn == 's' || sn == 'S') {
                 n[i] = 0;
-            }
+            } else if (sn == 's' || sn == 'S') {
+                n[i] = 0;
+            } else if (sn == 's' || sn == 'S') {
+                n[i] = 0;
+            } 
         }
          
         sum = sum + n[i];
