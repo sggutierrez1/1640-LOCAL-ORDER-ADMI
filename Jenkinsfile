@@ -10,7 +10,15 @@ pipeline {
                 git branch: 'main', poll: false, url: 'https://github.com/EnriqueTun23/1640-LOCAL-ORDER-ADMI.git'
             }
         }
-        stage('Liga del scanner') {
+        stage('Entrar ala carpeta cobol') {
+            steps {
+                script {
+                    echo 'Entrando ala carpeta cobol para scannear'
+                    sh 'cd ./Codigo/Cobol'
+                }
+            }
+        }
+        stage('Scanner cobol') {
             steps {
                 withSonarQubeEnv('sc1') {
                     sh """

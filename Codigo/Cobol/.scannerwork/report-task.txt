@@ -1,0 +1,7 @@
+organization=poc-55tq
+projectKey=poc-55tq
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.55352
+dashboardUrl=https://sonarcloud.io/dashboard?id=poc-55tq
+ceTaskId=AZA3JH-gsU_cc6Sz8FXp
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZA3JH-gsU_cc6Sz8FXp
