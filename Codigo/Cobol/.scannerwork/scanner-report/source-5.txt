@@ -1,0 +1,14 @@
+sonar.projectKey=poc-55tq
+sonar.organization=poc-55tq
+sonar.host.url=https://sonarcloud.io
+sonar.login=${env.SONAR_LOGIN}
+sonar.projectName=Testeo proyecto 1640-LOCAL-ORDER-ADMIN-COBOL
+sonar.projectVersion=1.0
+
+# Directorio que se encarga del testeo de cobol
+sonar.language=cobol
+sonar.sources=.
+sonar.cobol.file.suffixes=cbl,cpy
+sonar.lang.patterns.cobol=**/*
+sonar.cobol.copy.suffixes=cbl
+sonar.cobol.copy.directories=.
