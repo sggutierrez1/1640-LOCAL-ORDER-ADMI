@@ -29,6 +29,22 @@ pipeline {
                 }
             }
         }
+        stage('Regresar ala carpeta principal') {
+            steps {
+                script {
+                    echo 'Regresar ala carpeta principal y entrar a c++'
+                    sh 'cd ../..'
+                    sh 'cd ./Codigo/C++'
+                }
+            }
+        }
+        stage('Escanear codigo c++') {
+            steps {
+                script {
+                    sh 'build-wrapper-linux-x86-64 --out-dir bw-output ./compile.sh'
+                }
+            }
+        }
         
     }
 }
