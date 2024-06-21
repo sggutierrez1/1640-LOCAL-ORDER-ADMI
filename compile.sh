@@ -15,7 +15,7 @@ CSOURCES=$(find . -name '*.c')
 # Verificar si se encontraron archivos fuente
 if [ -z "$CPPSOURCES" ] && [ -z "$CSOURCES" ]; then
     echo "No se encontraron archivos fuente .cpp o .c"
-    exit 1
+    exit 0
 fi
 
 # Variable para contar los errores
