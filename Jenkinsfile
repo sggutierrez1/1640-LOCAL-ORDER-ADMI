@@ -41,7 +41,7 @@ pipeline {
         stage('Escanear codigo c++') {
             steps {
                 script {
-                    sh 'build-wrapper-linux-x86-64 --out-dir bw-output ./compile.sh'
+                    sh 'compile.sh'
                 }
             }
         }
