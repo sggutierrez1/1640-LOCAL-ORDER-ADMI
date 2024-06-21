@@ -38,10 +38,11 @@ pipeline {
                 }
             }
         }
-        stage('Escanear codigo c++') {
+        stage('Compilar codigo c++') {
             steps {
                 script {
-                    sh 'compile.sh'
+                    sh 'pwd'
+                    sh './compile.sh'
                 }
             }
         }
