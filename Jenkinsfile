@@ -33,16 +33,11 @@ pipeline {
             steps {
                 script {
                     echo 'Regresar ala carpeta principal y entrar a c++'
-                    sh 'cd ../..'
-                    sh 'cd ./Codigo/C++'
-                }
-            }
-        }
-        stage('Compilar codigo c++') {
-            steps {
-                script {
                     sh 'pwd'
-                    sh './compile.sh'
+                    sh 'cd ../..'
+                    sh ''
+                    sh 'chmod +x ./Codigo/C++/compile.sh'
+                    sh './Codigo/C++/compile.sh'
                 }
             }
         }
