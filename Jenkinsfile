@@ -10,17 +10,6 @@ pipeline {
                 git branch: 'main', poll: false, url: 'https://github.com/EnriqueTun23/1640-LOCAL-ORDER-ADMI.git'
             }
         }
-        stage('Entrar ala carpeta cobol') {
-            steps {
-                script {
-                    dir('.') {
-                    echo 'Entrando ala carpeta cobol para scannear'
-                    sh 'pwd'
-                    
-                    }
-                }
-            }
-        }
         stage('Scanner cobol') {
             steps {
                 withSonarQubeEnv('sc1') {
@@ -44,6 +33,11 @@ pipeline {
                         sh 'chmod +x ./compile.sh'
                         sh 'ls -a'
                         sh '$SONARQUBE_WRAPPER/build-wrapper-linux-x86-64 --out-dir bw-output ./compile.sh'
+                        sh """
+                        ${scannerHome}/bin/sonar-scanner \
+                        -Dsonar.login=${SONAR_TOKEN} \
+                        -X
+                    """
                     }
                 }
             }
