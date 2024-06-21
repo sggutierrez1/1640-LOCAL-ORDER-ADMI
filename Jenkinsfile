@@ -37,7 +37,6 @@ pipeline {
                     sh 'cd ../..'
                     sh 'chmod +x ./Codigo/C++/compile.sh'
                     sh 'cd ./Codigo/C++'
-                    sh 'sudo chmod +x $SONARQUBE_WRAPPER/build-wrapper-linux-x86-64'
                     sh 'ls -a'
                     sh '$SONARQUBE_WRAPPER/build-wrapper-linux-x86-64 --out-dir bw-output ./compile.sh'
                 }
