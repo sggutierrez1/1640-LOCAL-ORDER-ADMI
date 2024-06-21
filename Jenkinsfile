@@ -35,12 +35,13 @@ pipeline {
                     echo 'Regresar ala carpeta principal y entrar a c++'
                     sh 'pwd'
                     sh 'cd ../..'
-                    sh ''
                     sh 'chmod +x ./Codigo/C++/compile.sh'
-                    sh './Codigo/C++/compile.sh'
+                    sh 'cd ./Codigo/C++'
+                    sh '$SONARQUBE_WRAPPER/build-wrapper-linux-x86-64 --out-dir bw-output ./compile.sh'
                 }
             }
         }
+
         
     }
 }
