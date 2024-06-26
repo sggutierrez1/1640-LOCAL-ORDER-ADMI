@@ -10,6 +10,7 @@ pipeline {
                 git branch: 'main', poll: false, url: 'https://github.com/EnriqueTun23/1640-LOCAL-ORDER-ADMI.git'
             }
         }
+<<<<<<< HEAD
         stage('Entrar ala carpeta cobol') {
             steps {
                 script {
@@ -21,6 +22,8 @@ pipeline {
                 }
             }
         }
+=======
+>>>>>>> 267a0c06e33e5b1c097bfa2da7694d53c3a3bc8a
         stage('Scanner cobol') {
             steps {
                 withSonarQubeEnv('sc1') {
@@ -35,20 +38,7 @@ pipeline {
                 }
             }
         }
-        // stage('Regresar ala carpeta principal') {
-        //     steps {
-        //         script {
-        //             echo 'Regresar ala carpeta principal y entrar a c++'
-        //             sh 'pwd'
-        //             sh 'cd ../..'
-        //             sh 'chmod +x ./Codigo/C++/compile.sh'
-        //             sh 'cd ./Codigo/C++'
-        //             sh 'chmod +x $SONARQUBE_WRAPPER/build-wrapper-linux-x86-64'
-        //             sh 'ls -a'
-        //             sh '$SONARQUBE_WRAPPER/build-wrapper-linux-x86-64 --out-dir bw-output ./compile.sh'
-        //         }
-        //     }
-        // }
+        
         stage('Regresar ala carpeta principal') {
             steps {
                 script {
@@ -57,6 +47,12 @@ pipeline {
                         sh 'chmod +x ./compile.sh'
                         sh 'ls -a'
                         sh '$SONARQUBE_WRAPPER/build-wrapper-linux-x86-64 --out-dir bw-output ./compile.sh'
+                        sh """
+                        ${scannerHome}/bin/sonar-scanner \
+                        -Dsonar.login=${SONAR_TOKEN} \
+                        -X
+                    """
+                    }
                 }
             }
         }
