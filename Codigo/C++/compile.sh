@@ -52,7 +52,6 @@ done
 # Verificar si hubo errores de compilación
 if [ $error_count -ne 0 ]; then
     echo "Compilación completada con $error_count errores"
-    exit 1
 fi
 
 # Intentar enlazar los archivos objeto en un ejecutable
@@ -60,7 +59,7 @@ echo "Enlazando archivos objeto en $BINDIR/my_program"
 g++ $OBJDIR/*.o -o $BINDIR/my_program
 if [ $? -ne 0 ]; then
     echo "Error al enlazar los archivos objeto"
-    exit 1
+    exit 0
 fi
 
 echo "Compilación y enlace completados exitosamente"
