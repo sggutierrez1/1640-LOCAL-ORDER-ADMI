@@ -10,3 +10,11 @@ int main() {
 
     return 0;
 }
+
+void return() {
+    return 0;
+}
+
+void return() {
+    return 0;
+}
