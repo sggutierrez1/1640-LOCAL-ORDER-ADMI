@@ -11,42 +11,43 @@ pipeline {
             }
         }
         stage('Scanneos al mismo tiempo') {
-        parallel {
-            stage('Scanner cobol') {
-                steps {
-                    withSonarQubeEnv('sc1') {
-                        dir ('Codigo/Cobol') {
-                            sh """
+            parallel {
+                stage('Scanner cobol') {
+                    steps {
+                        withSonarQubeEnv('sc1') {
+                            dir('Codigo/Cobol') {
+                                sh """
                             ${scannerHome}/bin/sonar-scanner \
                             -Dsonar.login=${SONAR_TOKEN} \
                             -X
                         """
+                            }
                         }
-                        
+                    }
+                }
+                stage('Regresar ala carpeta principal') {
+                    steps {
+                        script {
+                            dir('Codigo/C++') {
+                                sh 'pwd'
+                                sh 'chmod +x ./compile.sh'
+                                sh 'ls -a'
+                                sh '$SONARQUBE_WRAPPER/build-wrapper-linux-x86-64 --out-dir bw-output ./compile.sh'
+                                sh """
+                                    ${scannerHome}/bin/sonar-scanner \
+                                    -Dsonar.login=${SONAR_TOKEN} \
+                                    -X
+                                """
+                            }
+                        }
                     }
                 }
             }
-            stage('Regresar ala carpeta principal') {
+        }
+        stage('Fin del pipline') {
             steps {
-                script {
-                    dir('Codigo/C++') {
-                        sh 'pwd'
-                        sh 'chmod +x ./compile.sh'
-                        sh 'ls -a'
-                        sh '$SONARQUBE_WRAPPER/build-wrapper-linux-x86-64 --out-dir bw-output ./compile.sh'
-                        sh """
-                        ${scannerHome}/bin/sonar-scanner \
-                        -Dsonar.login=${SONAR_TOKEN} \
-                        -X
-                    """
-                    }
-                }
+                sh 'Hola mundo'
             }
         }
-        }
-
-        }
-    
-        
     }
 }
