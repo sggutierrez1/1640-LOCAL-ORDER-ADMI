@@ -46,7 +46,7 @@ pipeline {
         }
         stage('Fin del pipline') {
             steps {
-                sh 'Hola mundo'
+                sh 'echo Hola mundo'
             }
         }
     }
