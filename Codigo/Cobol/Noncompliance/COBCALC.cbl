@@ -13,7 +13,7 @@
        01  PARM-1.
            05  CALL-FEEDBACK     PIC XX.
        01  FIELDS.
-           05  INPUT-1           PIC X.
+           05  INPUT-1           PIC XXX.
        01  INPUT-BUFFER-FIELDS.
            05  BUFFER-PTR        PIC x.
            05  BUFFER-DATA.
