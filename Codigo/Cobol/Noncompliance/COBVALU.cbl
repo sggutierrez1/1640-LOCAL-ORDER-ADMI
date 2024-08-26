@@ -11,7 +11,7 @@
        DATA DIVISION.
        WORKING-STORAGE SECTION.
        01  CHAR-DATA.
-           05  INPUT-1           PIC X(10).
+           05  INPUT-1           PIC X.
            05  PAYMENT-OUT       PIC $$$$,$$$,$$9.99 USAGE DISPLAY.
            05  INTEREST-IN       PIC X.
            05  NO-OF-PERIODS-IN  PIC X.
@@ -23,7 +23,7 @@
        01 NUM-DATA.
            05  PAYMENT           PIC S9(9)V99 USAGE COMP.
            05  INTEREST          PIC S9(3)V99 USAGE COMP.
-           05  COUNTER           PIC 99 USAGE COMP.
+           05  COUNTER           PIC X.
            05  NO-OF-PERIODS     PIC 99 USAGE COMP.
            05  VALUE-AMOUNT   OCCURS 99 PIC S9(7)V99 COMP.
        LINKAGE SECTION.
