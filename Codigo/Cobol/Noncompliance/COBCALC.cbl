@@ -15,7 +15,7 @@
        01  FIELDS.
            05  INPUT-1           PIC XXX.
        01  INPUT-BUFFER-FIELDS.
-           05  BUFFER-PTR        PIC x.
+           05  BUFFER-PTR        PIC 9.
            05  BUFFER-DATA.
                10  FILLER        PIC X(10)  VALUE "LOAN".
                10  FILLER        PIC X(10)  VALUE "PVALUE".
