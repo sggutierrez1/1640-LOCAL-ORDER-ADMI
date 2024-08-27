@@ -44,7 +44,7 @@
        EXEC SQL END DECLARE SECTION END-EXEC.
       
        01  WS-AREA.
-           05  WS-SAM-FILE-STATUS     PIC 9   VALUE SPACES.
+           05  WS-SAM-FILE-STATUS      PIC XX  VALUE SPACES.
                88 SAM-FILE-EOF                 VALUE '10'.
                88 SAM-FILE-OPEN                VALUE '00'.
  
