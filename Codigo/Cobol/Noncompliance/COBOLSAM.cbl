@@ -62,7 +62,12 @@
           
        0100-INICIO.
            OPEN INPUT SAM-FILE.
-           PERFORM 0120-LEE-SAM-FILE THRU 0120-FIN.
+           IF SAM-FILE-OPEN 
+              PERFORM 0120-LEE-SAM-FILE THRU 0120-FIN
+           ELSE 
+              DISPLAY 'COBOLSAM SAM-FILE CERRADO'
+           END-IF.
+           
        0100-FIN.
            EXIT.
 

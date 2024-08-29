@@ -22,8 +22,7 @@
            05  NO-OF-PERIODS     PIC 9.
            05  OUTPUT-LINE       PIC X.
        LINKAGE SECTION.
-       01  PARM-1.
-           05  CALL-FEEDBACK     PIC XX.
+           COPY  PARMLINK.
        PROCEDURE DIVISION USING PARM-1.
            MOVE "OK" TO CALL-FEEDBACK.
            MOVE "30000 .09 24 " TO INPUT-1.
