@@ -74,7 +74,7 @@
        0120-LEE-SAM-FILE.
            READ SAM-FILE NEXT AT END
                 DISPLAY "PROGRAMA FIN SAM-FILE".
-            MOVE SAM-FILE-KEY-NUMBER  TO SAM_ID.
+            MOVE SAM-FILE-KEY-NUMBER  TO SAM-ID.
            EXIT.
 
        0140-SELECT-SAM-TAB.
